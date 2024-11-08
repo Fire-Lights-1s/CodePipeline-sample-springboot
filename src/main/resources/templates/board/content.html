@@ -1,0 +1,52 @@
+<html xmlns="https://www.thymeleaf.org/">
+	<head>
+		<meta charset="UTF-8">
+		<title>content.html</title>	
+	</head>
+	<body>
+		<h1>content.html</h1>
+		<table border="1">
+			<tr>
+				<td>
+					글번호
+				</td>
+				<td>
+					<span th:text="${board.num}"></span>
+				</td>
+				<td>
+					조회수
+				</td>
+				<td>
+					<span th:text="${board.readCount}"></span>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="1">글쓴이</td>
+				<td colspan="3"><span th:text="${board.name}"></span></td>
+			</tr>
+			<tr>
+				<td colspan="1">날짜</td>
+				<td colspan="3"><span th:text="${board.date}"></span></td>
+			</tr>
+			<tr>
+				<td colspan="1">글제목</td>
+				<td colspan="3"><span th:text="${board.subject}"></span></td>
+			</tr>
+			<tr>
+				<td colspan="1">글내용</td>
+				<td colspan="3"><span th:text="${board.content}"></span></td>
+			</tr>
+			<tr>
+				<td>
+					<a href="/boardList">글목록</a>
+				</td>
+				<td th:if="${session.memberID}">
+						<a th:href="@{/boardUpdate(num=${board.num})}">글수정</a>
+				</td>
+				<td th:if="${session.memberID}">
+						<a th:href="@{/boardDelete(num=${board.num})}">글삭제</a>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

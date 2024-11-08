@@ -1,0 +1,30 @@
+<html xmlns="https://www.thymeleaf.org/">
+	<head>
+		<meta charset="UTF-8">
+		<title>list.html</title>	
+	</head>
+	<body>
+		<h1>list.html</h1>
+		<div th:if="${session.memberID}">
+			<h2>로그인 아이디 : <span th:text="${session.memberID}"></span></h2>
+			<a th:href="@{/logout}">로그아웃</a>		
+		</div>
+		<div th:unless="${session.memberID}">
+			<a th:href="@{/login}">로그인</a>		
+			<a th:href="@{/insert}">회원가입</a>		
+		</div>
+		
+		<table>
+			<tr>
+				<th>아이디</th>
+				<th>비밀번호</th>
+				<th>이름</th>
+			</tr>
+			<tr th:each="member, status:${memberList}">
+				<td><span th:text="${member.id}"></span></td>
+				<td><span th:text="${member.pass}"></span></td>
+				<td><span th:text="${member.name}"></span></td>
+			</tr>
+		</table>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<html xmlns="https://www.thymeleaf.org/">
+	<head>
+		<title>test5.html</title>	
+	</head>
+	<body>
+		<a th:href="@{https://www.thymeleaf.org/}">thymeleaf 홈페이지 이동</a>
+		<br>
+		<a th:href="@{/test}">test 페이지 이동</a>
+		<br>
+		<a th:href="@{/test6(id='kim',pass='p123')}">test6 페이지 이동</a>
+		<br>
+		<h1>test5.html</h1>
+		<table border="1">
+			<tr th:each="memberDTO, status:${memberList}">
+				<td th:if="${status.even}" th:text="짝수"></td>
+				<td th:unless="${status.even}" th:text="홀수"></td>
+				<td>
+					아이디 : <span th:text="${memberDTO.id}"></span>
+				</td>
+				<td>
+					비밀번호 : <span th:text="${memberDTO.pass}"></span>
+				</td>
+				<td>
+					이름 : <span th:text="${memberDTO.name}"></span>
+				</td>
+				<td>
+					날짜 : <span th:text="${memberDTO.date}"></span>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+	<head>
+		<meta charset="UTF-8">
+		<title>main.html</title>	
+	</head>
+	<body>
+		<h1>main.html</h1>
+<!--		<div th:if="${session.memberID}">-->
+<!--			<h2>로그인 아이디 : <span th:text="${session.memberID}"></span></h2>-->
+<!--			<a th:href="@{/logout}">로그아웃</a>		-->
+<!--		</div>-->
+<!--		<div th:unless="${session.memberID}">-->
+<!--			<a th:href="@{/login}">로그인</a>		-->
+<!--			<a th:href="@{/insert}">회원가입</a>		-->
+<!--		</div>-->
+		<div sec:authorize="isAuthenticated()">
+			<h2>로그인 아이디 : <span sec:authentication="name">아이디</span></h2>
+			<a th:href="@{/logout}">로그아웃</a>		
+		</div>
+		<div sec:authorize="isAuthenticated()" th:sec:authentication="name">아이디</div>
+		
+		<form th:action="@{/insert}" method="post">
+		<table>
+			<tr>
+				<td>
+					<a href="/info">회원정보 조회</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="/update">회원정보 수정</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="/delete">회원정보 삭제</a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="/list">회원정보 목록</a>
+				</td>
+			</tr>
+		</table>
+		</form>
+		<a href="/boardWrite">게시판 글쓰기</a>
+		<a href="/boardList">게시판 글목록</a>
+	</body>
+</html>
