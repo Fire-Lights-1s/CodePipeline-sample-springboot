@@ -45,7 +45,7 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
-bootWar{
+bootWar {
 	archiveBaseName = 'myapp'
-	archiveVersion = '0.1.0'
+	archiveVerson = '0.1.0'
 }
